@@ -47,7 +47,7 @@ xfconf-query -c xfwm4 -p /general/theme -s "Arc-Dark"
 
 # set default resolution
 echo "# Get the name of the main display
-DISPLAY_NAME=\$(xrandr | awk '/ connected /{print $1; exit}')
+DISPLAY_NAME=\$(xrandr | awk '/ connected /{print \$1; exit}')
 
 # Set the resolution to 1920x1080 (1080p)
 xrandr --output "\$DISPLAY_NAME" --mode 1920x1080
