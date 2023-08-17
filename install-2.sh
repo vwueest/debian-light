@@ -109,3 +109,5 @@ echo '<?xml version="1.0" encoding="UTF-8"?>
   </property>
 </channel>
 ' > $HOME/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml
+
+xfwm4 --replace
