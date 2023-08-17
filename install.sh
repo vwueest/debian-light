@@ -1,9 +1,9 @@
 #!/bin/bash
 
 sudo apt-get install nala -y
-sudo nala install --no-install-recommends \
+sudo nala install -y --no-install-recommends \
     xfce4
-sudo nala install --no-install-recommends \
+sudo nala install -y --no-install-recommends \
     libxfce4ui-utils \
     thunar \
     xfce4-appfinder \
@@ -14,7 +14,7 @@ sudo nala install --no-install-recommends \
     xfconf \
     xfdesktop4 \
     xfwm4
-sudo nala install --no-install-recommends \
+sudo nala install -y --no-install-recommends \
     falkon \
     vim \
     htop \
@@ -25,9 +25,8 @@ sudo nala install --no-install-recommends \
     spice-webdavd \
     xfce4-whiskermenu-plugin \
     arandr
-sudo nala install \
-    lightdm \
-    -y
+sudo nala install -y \
+    lightdm
 
 # setup autologin
 
@@ -48,15 +47,16 @@ xfconf-query -c xfwm4 -p /general/theme -s "Arc-Dark"
 
 # set default resolution
 echo "# Get the name of the main display
-DISPLAY_NAME=$(xrandr | awk '/ connected /{print $1; exit}')
+DISPLAY_NAME=\$(xrandr | awk '/ connected /{print $1; exit}')
 
 # Set the resolution to 1920x1080 (1080p)
-xrandr --output "$DISPLAY_NAME" --mode 1920x1080
+xrandr --output "\$DISPLAY_NAME" --mode 1920x1080
 " >> $HOME/.xsessionrc
 
 # set panel
+mkdir -p $HOME/.config/xfce4/xfconf/xfce-perchannel-xml/
 cp $HOME/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml $HOME/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml.bak
-echo "<?xml version="1.0" encoding="UTF-8"?>
+echo '<?xml version="1.0" encoding="UTF-8"?>
 
 <channel name="xfce4-panel" version="1.0">
   <property name="configver" type="int" value="2"/>
@@ -153,4 +153,4 @@ echo "<?xml version="1.0" encoding="UTF-8"?>
     <property name="plugin-11" type="string" value="separator"/>
   </property>
 </channel>
-" > $HOME/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml
+' > $HOME/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml
