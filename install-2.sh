@@ -4,7 +4,9 @@ xfconf-query -c xsettings -p /Net/ThemeName -s "Arc-Dark"
 xfconf-query -c xsettings -p /Net/IconThemeName -s "Papirus-Dark"
 xfconf-query -c xfwm4 -p /general/theme -s "Arc-Dark"   
 # xfconf-query -c xfce4-terminal -p /color-schemes/Tango/background-color -s "#11111D"
-# xfce4-terminal --preferences
+echo "#11111D"
+xfce4-terminal --preferences
+xfconf-query -c xfwm4 -p /general/use_compositing -s false # turn compositor off
 
 # set panel
 mkdir -p $HOME/.config/xfce4/xfconf/xfce-perchannel-xml/
